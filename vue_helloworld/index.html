@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HelloWorld</title>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <div id = "app"> {{content}}</div>
+    <!-- 该区域不被接管 -->
+    <div>{{content}}</div>
+    <script>
+        // var dom = document.getElementById("app");
+        // dom.innerHTML = "Hello World!"
+        // setTimeout(function() {
+        //     var dom = document.getElementById("app");
+        // dom.innerHTML = "Bye World!"
+        // }, 2000)
+
+        var app = new Vue({
+            //实例负责管理的区域 dom标签
+            el: "#app",
+            data:{
+                content: "Hello hero!"
+            }
+        })
+
+        setTimeout(function (){
+            app.$data.content = "Bye  hero!"
+        }, 2000)
+        
+    </script>
+  </body>
+</html>

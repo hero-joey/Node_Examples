@@ -179,5 +179,34 @@ class bachlor {
 
 var b1 = new bachlor("hero", 31, "python")
 var b2 = new bachlor("lucky", 25, "java")
-b1.teaching();
-b2.teaching();
+b1.bachlor();
+b2.bachlor();
+
+const p = function(){
+    let num = Math.random();
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            num > 0.5 ? resolve(num) : reject(num);
+        }, 1000);
+    })
+};
+
+p().then(val => {
+    console.info(`Status switches to fulfilled, and the value is ${val}`);
+}, val => {
+    console.info(`Status switches to reject, and the value is ${val}`);
+})
+
+var promise = new Promise((resolve, reject) => {
+    console.log("耗时任务执行")
+    resolve("数据")
+})
+
+promise.then((res) => {
+    console.log("res")
+},
+(error) => {
+    console.log(error)
+})
+
+console.log("Finish")

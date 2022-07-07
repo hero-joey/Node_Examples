@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Template</title>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <div id = "app"> 
+      <!-- {{firstName + " " + lastName}}
+      {{fullname}}
+      {{age}}
+      <div> {{GetFullName()}}</div> -->
+      <div> {{follyName}}</div>
+    </div>
+  
+    <script>
+
+      //vue生命周期就是vue实例在某个时间点会自动执行的函数
+        var vm =  new Vue({
+          "el" : "#app",
+          data:{
+            firstName : "Hero",
+            lastName : "Zhao",
+            age : 30,
+            follyName: "Hero Zhao"
+          },
+          
+          //计算属性， 内置缓存
+          //依赖的数据变化时，会重新计算
+          computed: {
+            fullname() {
+              console.log("compute once");
+              return this.firstName + " " + this.lastName;
+            }  
+          },
+
+          //方法
+          methods: {
+            //不会缓存，数据变化时，需要重新刷新
+            GetFullName(){
+              console.log("call once");
+              return this.firstName + " " + this.lastName;
+            }
+
+          },
+
+          //侦听器, 具备缓存机制
+          watch: {
+            firstName : function() {
+                console.log("watch first name call once");
+                this.follyName = this.firstName + this.lastName;
+            },
+
+            lastName : function() {
+              console.log("watch last name call once");
+                this.follyName = this.firstName + this.lastName;
+            }
+          }
+
+        })
+      
+    </script>
+  </body>
+</html>

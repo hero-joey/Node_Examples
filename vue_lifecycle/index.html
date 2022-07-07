@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TodoList</title>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <div id = "root"> 
+      <!-- <div @click="handleClick">
+        {{message}}
+      </div>
+      <item></item> -->
+    </div>
+  
+    <script>
+      //根实例
+      Vue.component("item", 
+      {
+        template:"<div>Hello hero</div>"
+      });
+
+      //vue生命周期就是vue实例在某个时间点会自动执行的函数
+        var vm =  new Vue({
+          "el" : "#root",
+          template:"<div>{{message}}</div>", 
+          data:{
+            message : "hello world"
+          },
+          methods: {
+            handleClick() {
+              alert("Clicked")
+            }
+          },
+          beforeCreate () {
+            console.log("before create")
+          },
+          created () {
+            console.log("created")
+          },
+
+          beforeMount () {
+            console.log(this.$el)
+            console.log("before mount")
+          },
+
+          mounted () {
+            console.log(this.$el)
+            console.log("mouted")
+          },
+          beforeDestroy () {
+            console.log("before destroy")
+          },
+
+          destroyed () {
+            console.log("destroyed")
+          },
+
+          beforeUpdate () {
+            console.log("before update")
+          },
+          updated () {
+            console.log("updated")
+          }
+
+        })
+      
+    </script>
+  </body>
+</html>
